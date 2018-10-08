@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagination Item</title>
+</head>
+<body>
+
+<nav aria-label="aaaaa" th:fragment="pagination(data)">
+
+    <ul class="pagination">
+        <li class="page-item" th:class="${companies.first} ? 'disabled' : '' ">
+            <a class="page-link" href="#" tabyaindex="-1">Previous</a>
+        </li>
+
+        <li class="page-item"><a class="page-link" th:text="${companies.number-2}"  th:onclick="'getData('+${companies.number-2} +')'"></a></li>
+        <li class="page-item"><a class="page-link" th:text="${companies.number-1}" th:onclick="'getData('+${companies.number-1} +')'"></a></li>
+        <li class="page-item active">
+            <a class="page-link"  th:text="${companies.number}"> <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="page-item"><a class="page-link" th:text="${companies.number+1}" th:onclick="'getData('+${companies.number+1} +')'"></a></li>
+        <li class="page-item"><a class="page-link" th:text="${companies.number+2}" th:onclick="'getData('+${companies.number+2} +')'"></a></li>
+
+
+        <li class="page-item" th:class="${companies.last} ? 'disabled' : '' ">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

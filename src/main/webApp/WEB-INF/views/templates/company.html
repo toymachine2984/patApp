@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Company</title>
+    <th:block th:include="~{templates.html :: headerfilter}">
+    </th:block>
+</head>
+<body>
+<header th:insert="~{templates.html :: header}"></header>
+<div class="content">
+    <div class="row">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th th:utext="#{company.name}"></th>
+                <th th:utext="#{company.bin}"></th>
+                <th th:utext="#{company.address}"></th>
+                <th th:utext="#{company.head}"></th>
+                <th th:utext="#{company.branch}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${company.nameRu}"></td>
+                <td th:text="${company.bin}"></td>
+                <td th:text="${company.address}"></td>
+                <td th:text="${company.headFio}"></td>
+                <td th:text="${company.branch_ru}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="${updateCompany}/${company.id}?form">Редактировать</a>
+    </div>
+</div>
+<div th:replace="~{templates/header_footer.html:: footer}">
+
+</div>
+<th:block th:include="~{templates/header_footer.html :: scripts}">
+</th:block>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>LoginPage</title>
+    <link rel="stylesheet"
+          href="/resources/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.css">
+    <th:block th:include="~{templates/header_footer.html :: styles}">
+    </th:block>
+</head>
+<body>
+<div th:replace="~{templates/header_footer.html :: header}"></div>
+<main class="overlay d-flex align-items-center">
+    <div class="full-page-intro">
+    <video loop muted autoplay poster="img/videoframe.jpg" class="bg-video">
+    <source src="/resources/images/tablet_01.mov" type="video/mp4">
+    </video>
+    </div>
+
+    <div class="container">
+
+
+        <div class="row justify-content-between">
+            <div class="w-40 text-justify p-2">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab accusantium ad autem, cumque
+                    dolorum, eligendi est iure libero odit perspiciatis quae quibusdam quis saepe sed sunt
+                    suscipit
+                    velit veniam.
+                </p>
+            </div>
+
+            <div class="card br-d w-40 ">
+                <div class="card-header gradient-main font-f-m" th:utext="#{page.form.login.form}">
+
+                </div>
+                <div class="card-body">
+                    <form action="/loginAction" method="post">
+                        <div class="form-group">
+                            <label for="inputEmail" class="bmd-label-static">Email address</label>
+                            <input type="email" class="form-control" id="inputEmail"
+                                   aria-describedby="emailHelp" th:placeholder="#{page.form.login.name}"
+                                   name="j_username" autocomplete = "username">
+                            <span class="bmd-help">We'll never share your email with anyone else.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="bmd-label-static">Password</label>
+                            <input type="password" class="form-control" id="inputPassword"
+                                   th:placeholder="#{page.form.login.password}" name="j_password" autocomplete = "current-password">
+                            <span class="bmd-help">We'll never share your email with anyone else.</span>
+                        </div>
+                        <!--<div class="form-check">-->
+                            <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+                            <!--<label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+                        <!--</div>-->
+                        <button type="submit" class="btn btn-primary">
+                            <th:block th:utext="#{page.form.submit}"></th:block>
+                            <i class="fas fa-sign-in-alt mr-2"></i>
+                        </button>
+                        <a target="_blank" href="/user/registration"
+                           class="btn btn-primary">
+                            <th:block th:utext="#{page.navigation.create.user}"></th:block>
+                            <i class="fa fa-graduation-cap ml-2"></i>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="row col-xl-10">-->
+        <!--<div class="d-flex flex-column d-flex flex-column justify-content-center align-items-center border border-light shadow br-d">-->
+        <!--<div class="font-f-m p-2 m-4">-->
+        <!--<h3>Make great thing</h3>-->
+        <!--</div>-->
+        <!--<hr class="w-75" align="center" size="2px" color="white">-->
+        <!--<div class="w-75 text-justify p-2">-->
+        <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab accusantium ad autem, cumque-->
+        <!--dolorum, eligendi est iure libero odit perspiciatis quae quibusdam quis saepe sed sunt-->
+        <!--suscipit-->
+        <!--velit veniam.-->
+        <!--</p>-->
+        <!--</div>-->
+        <!--<div class="w-100 p-2">-->
+        <!--<ul class="d-flex justify-content-around align-items-center ul-btn-group">-->
+        <!--<li class="btn w-30  border border-light">Thanks</li>-->
+        <!--<li class="btn w-30  border border-light">More</li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+
+</main>
+<div th:replace="~{templates/header_footer.html:: footer}"></div>
+<!--<header>-->
+<!---->
+<!--<div class="full-page-intro">-->
+<!--<div>-->
+<!---->
+<!--</div>-->
+
+<!--<video class="video-intro" autoplay loop>-->
+<!--<source src="/resources/tablet_01.mov" type="video/mp4"/>-->
+<!--</video>-->
+
+<!--<div class="mask rgba-black-light d-flex justify-content-center align-items-center">-->
+
+<!--<div class="container">-->
+
+<!--<div class="row wow fadeIn">-->
+
+<!--<div class="col-md-6 mb-4 white-text text-center text-md-left">-->
+
+<!--<h1 class="display-4 font-weight-bold">Welcome</h1>-->
+
+<!--<hr class="hr-light">-->
+
+<!--<p>-->
+<!--<strong>Extums ridetis, tanquam domesticus assimilatio.</strong>-->
+<!--</p>-->
+<!--<p class="mb-4 d-none d-md-block">-->
+<!--<strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi autem beatae-->
+<!--corporis distinctio ea, eligendi eum, excepturi explicabo fugiat labore magnam mollitia,-->
+<!--necessitatibus officia optio placeat praesentium quasi voluptas?</strong>-->
+<!--</p>-->
+<!--<a target="_blank" href="/user/registration"-->
+<!--class="btn btn-indigo btn-lg" th:utext="#{page.navigation.create.user}">Registration-->
+<!--<i class="fa fa-graduation-cap ml-2"></i>-->
+<!--</a>-->
+<!--</div>-->
+<!--<div class="col-md-6 col-xl-5 mb-4">-->
+<!--<div class="card">-->
+<!--<div class="card-body">-->
+<!--<form name="">-->
+<!--<h3 class="dark-grey-text text-center">-->
+<!--<strong ></strong>-->
+<!--</h3>-->
+<!--<hr>-->
+
+<!--<div class="md-form">-->
+<!--<i class="fas fa-user prefix grey-text"></i>-->
+<!--<input type="text" id="form3" class="form-control" name="j_username">-->
+<!--<label for="form3" th:utext="#{page.form.login.name}">Your login</label>-->
+<!--</div>-->
+<!--<div class="md-form">-->
+<!--<i class="fas fa-key prefix grey-text"></i>-->
+<!--<input type="password" id="form2" class="form-control" name="j_password">-->
+<!--<label for="form2" th:utext="#{page.form.login.password}">Your password</label>-->
+<!--</div>-->
+
+<!--<div class="text-center">-->
+<!--<button class="btn btn-indigo" >Send-->
+<!--<i class="fas fa-sign-in-alt ml-2">-->
+<!--</i>-->
+<!--</button>-->
+<!--<hr>-->
+
+<!--</div>-->
+<!--</form>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</header>-->
+
+
+<th:block th:include="~{templates/header_footer.html :: scripts}">
+</th:block>
+</body>
+</html>

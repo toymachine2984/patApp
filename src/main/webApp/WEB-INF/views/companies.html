@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Companies page</title>
+    <th:block th:include="~{templates/header_footer.html :: styles}">
+    </th:block>
+    <link rel="stylesheet" href="/resources/MDB-Free/css/addons/datatables.css">
+
+</head>
+<body>
+<div th:replace="~{templates/header_footer.html :: header}"></div>
+<main>
+    <div class="container">
+        <!-- Table with panel -->
+        <div class="card card-cascade narrower" id="results-block">
+
+            <!-- Card image -->
+            <div class="view overlay">
+                <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
+                     alt="Card image cap">
+                <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+
+
+            <div class="px-4">
+                <div class="table-wrapper">
+                    <table id="companiesList" class="table table-hover mb-0">
+                        <thead>
+                        <tr>
+                            <th class="th-lg">
+                                <th:block th:utext="#{company.name}"></th:block>
+                            </th>
+                            <th class="th-lg">
+                                <th:block th:utext="#{company.bin}"></th:block>
+                            </th>
+                            <th class="th-lg">
+                                <th:block th:text="#{company.address}"></th:block>
+                            </th>
+                            <th class="th-lg">
+                                <th:block th:utext="#{company.region}"></th:block>
+                            </th>
+                            <th class="th-lg">
+                                <th:block th:utext="#{company.branch}"></th:block>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div th:replace="~{templates/header_footer.html:: footer}"></div>
+<th:block th:include="~{templates/header_footer.html :: scripts}">
+</th:block>
+<script src="/resources/MDB-Free/js/addons/datatables.min.js"></script>
+<script src="/resources/companies.js"></script>
+</body>
+</html>
