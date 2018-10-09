@@ -3,7 +3,7 @@
 }
 
 body {
-    color: white;
+    color: black;
     background-color: white;
 }
 
@@ -163,6 +163,13 @@ main {
 
 .polygon-main {
     fill: url(#main-grad);
+}
+.polygon-head-main{
+    fill: url(#main-head-grad);
+}
+
+.shadow-none {
+    box-shadow: none !important;
 }
 
 

@@ -2,7 +2,6 @@ package app.comp.controller;
 
 
 import app.comp.entity.data.Company;
-import app.comp.entity.data.Region;
 import app.comp.entity.system.DataTable;
 import app.comp.service.interfaces.CompanyService;
 import app.comp.service.interfaces.RegionService;
@@ -83,14 +82,16 @@ public class CompanyController {
                     .collect(Collectors.toList());
 
             List<DataTable.Column> collect1 = dataTable.getColumns().stream().filter(DataTable.Column::isSearchable).collect(Collectors.toList());
-//            String nameRu = collect1.stream().filter(c -> c.getName().equals("nameRu")).findFirst().orElse(new DataTable.Column()).getSearch().getValue();
             Optional<DataTable.Column> nameRu1 = collect1.stream().filter(c -> c.getData().equals("nameRu")).findFirst();
-//            String bin = collect1.stream().filter(c -> c.getName().equals("bin")).findFirst().orElse(new DataTable.Column()).getSearch().getValue();
             Optional<DataTable.Column> bin1 = collect1.stream().filter(c -> c.getData().equals("bin")).findFirst();
             String s1 = bin1.map(b -> b.getSearch().getValue()).orElse("");
-
             String s = nameRu1.map(o -> o.getSearch().getValue()).orElse("");
-            Iterable<Region> all = regionService.getAll();
+
+
+//            String nameRu = collect1.stream().filter(c -> c.getName().equals("nameRu")).findFirst().orElse(new DataTable.Column()).getSearch().getValue();
+//            String bin = collect1.stream().filter(c -> c.getName().equals("bin")).findFirst().orElse(new DataTable.Column()).getSearch().getValue();
+
+//            Iterable<Region> all = regionService.getAll();
 //
 //            return service.findCompaniesByNameRuIsLikeAndBinLike(s, s1,
 //                    PageRequest.of(dataTable.getStart() / dataTable.getLength(), dataTable.getLength(), Sort.by(collect)));

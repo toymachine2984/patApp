@@ -25,13 +25,12 @@
                         <div class="form-group">
                             <label for="email" class="bmd-label-floating" th:utext="#{page.form.login.name}">Email
                                 address</label>
-                            <input type="text" id="email" class="form-control"
+                            <input type="email" id="email" class="form-control"
                                    th:classappend="(${#fields.hasErrors('login')} ? 'is-invalid' : (${user.login} ? 'is-valid' : ''))"
                                    name="email"
                                    th:field="*{login}" required>
-                            <span class="bmd-help">We'll never share your email with anyone else.</span>
                             <th:block th:if="${#fields.hasErrors('login')}">
-                                <div class="invalid-feedback" th:utext="#{page.form.registration.email}">
+                                <div class="invalid-feedback" th:utext="#{page.form.registration.password}">
                                     Please choose a username.
                                 </div>
                             </th:block>
@@ -42,14 +41,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="pass" class="bmd-label-floating" th:utext="#{page.form.login.name}">Password</label>
+                            <label for="pass" class="bmd-label-floating" th:utext="#{page.form.registration.password}">Password</label>
                             <input type="password" id="pass" class="form-control"
                                    th:classappend="(${#fields.hasErrors('password')} ? 'is-invalid' : (${user.password} ? 'is-valid' : ''))"
                                    name="password"
                                    th:field="*{password}" required>
                             <span class="bmd-help">We'll never share your email with anyone else.</span>
                             <th:block th:if="${#fields.hasErrors('password')}">
-                                <div class="invalid-feedback" th:utext="#{page.form.registration.password}">
+                                <div class="invalid-feedback" th:utext="#{validation.user.create.field.password}">
                                     Please choose a username.
                                 </div>
                             </th:block>
@@ -60,19 +59,59 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="pass" class="bmd-label-floating" th:utext="#{page.form.login.name}">Password</label>
-                            <input type="password" id="pass" class="form-control"
+                            <label for="passMtc" class="bmd-label-floating"
+                                   th:utext="#{page.form.registration.matchingPassword}">Password</label>
+                            <input type="password" id="passMtc" class="form-control"
                                    th:classappend="(${#fields.hasErrors('matchingPassword')} ? 'is-invalid' : (${user.matchingPassword} ? 'is-valid' : ''))"
                                    name="password"
                                    th:field="*{matchingPassword}" required>
                             <span class="bmd-help">We'll never share your email with anyone else.</span>
-                            <th:block th:if="${#fields.hasErrors('password')}">
-                                <div class="invalid-feedback" th:utext="#{page.form.registration.matchingPassword}">
+                            <th:block th:if="${#fields.hasErrors('matchingPassword')}">
+                                <div class="invalid-feedback"
+                                     th:utext="#{validation.user.create.field.matchingPassword}">
                                     Please choose a username.
                                 </div>
                             </th:block>
-                            <th:block th:if="!${#fields.hasErrors('password')}">
+                            <th:block th:if="!${#fields.hasErrors('matchingPassword')}">
                                 <div class="valid-feedback" th:utext="#{page.form.registration.matchingPassword}">
+                                </div>
+                            </th:block>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firstName" class="bmd-label-floating"
+                                   th:utext="#{page.form.registration.firstName}">First Name</label>
+                            <input type="text" id="firstName" class="form-control"
+                                   th:classappend="(${#fields.hasErrors('firstName')} ? 'is-invalid' : (${user.firstName} ? 'is-valid' : ''))"
+                                   name="password"
+                                   th:field="*{firstName}" required>
+                            <th:block th:if="${#fields.hasErrors('firstName')}">
+                                <div class="invalid-feedback"
+                                     th:utext="#{validation.user.create.field.required}">
+                                    Please choose a username.
+                                </div>
+                            </th:block>
+                            <th:block th:if="!${#fields.hasErrors('firstName')}">
+                                <div class="valid-feedback" th:utext="#{page.form.registration.firstName}">
+                                </div>
+                            </th:block>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName" class="bmd-label-floating"
+                                   th:utext="#{page.form.registration.lastName}">Last Name</label>
+                            <input type="text" id="lastName" class="form-control"
+                                   th:classappend="(${#fields.hasErrors('lastName')} ? 'is-invalid' : (${user.lastName} ? 'is-valid' : ''))"
+                                   name="password"
+                                   th:field="*{lastName}" required>
+                            <th:block th:if="${#fields.hasErrors('lastName')}">
+                                <div class="invalid-feedback"
+                                     th:utext="#{validation.user.create.field.required}">
+                                    Please choose a username.
+                                </div>
+                            </th:block>
+                            <th:block th:if="!${#fields.hasErrors('lastName')}">
+                                <div class="valid-feedback" th:utext="#{page.form.registration.lastName}">
                                 </div>
                             </th:block>
                         </div>
@@ -82,11 +121,6 @@
                             <th:block th:utext="#{page.form.submit}"></th:block>
                             <i class="fas fa-sign-in-alt mr-2"></i>
                         </button>
-                        <a target="_blank" href="/user/registration"
-                           class="btn btn-primary">
-                            <th:block th:utext="#{page.navigation.create.user}"></th:block>
-                            <i class="fa fa-graduation-cap ml-2"></i>
-                        </a>
                     </form>
                 </div>
             </div>
