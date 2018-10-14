@@ -1,6 +1,7 @@
 package app.comp.service.interfaces;
 
 import app.comp.entity.data.Company;
+import app.comp.util.ViewMessage.View;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -29,6 +30,9 @@ public interface CompanyService {
 
     Page<Company> findAllByPage(Pageable pageable);
 
-    Page<Company> findCompaniesByNameRuIsLikeAndBinLike(String nameRu,String bin,Pageable pageable);
+    Page<View.AJAXCompanyRu> findAllRuEnByPage(long regionId, Pageable pageable);
+
+
+    Page<Company> findCompaniesByNameRuIsLikeAndBinLike(String nameRu, String bin, Pageable pageable);
 
 }

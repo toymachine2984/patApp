@@ -1,12 +1,9 @@
 package app.comp.config.persistenceConfig;
 
 
-import app.comp.util.AuditorAwareImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.data.domain.AuditorAware;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.stereotype.Component;
@@ -35,10 +32,6 @@ public class BasePersistenceConfig {
         return localContainerEntityManagerFactoryBean;
     }
 
-    @Bean
-    public AuditorAware<String> auditorProvider() {
-        return new AuditorAwareImpl();
-    }
 
 
     private Properties jpaProperties() {

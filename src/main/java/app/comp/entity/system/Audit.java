@@ -1,5 +1,7 @@
 package app.comp.entity.system;
 
+import app.comp.util.ViewMessage.View;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Type;
 import org.hibernate.envers.Audited;
 import org.joda.time.DateTime;
@@ -12,16 +14,21 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
-
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-//@Entity
 @MappedSuperclass
 @Audited
 public abstract class Audit {
 
+
+    @JsonView(value = View.AJAXCompanyAudit.class)
     private DateTime createdDate;
+
+    @JsonView(value = View.AJAXCompanyAudit.class)
     private DateTime modifiedDate;
+
+    @JsonView(value = View.AJAXCompanyAudit.class)
     private String createdBy;
+
+    @JsonView(value = View.AJAXCompanyAudit.class)
     private String modifiedBy;
 
 
@@ -70,7 +77,6 @@ public abstract class Audit {
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
     }
-
 
 
 }

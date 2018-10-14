@@ -18,13 +18,13 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@Access(AccessType.PROPERTY)
 @EntityListeners({AuditingEntityListener.class})
 @Audited
 @Table(name = "user")
 @FieldMatch(first = "password", second = "matchingPassword", message = "{validation.user.create.field.matchingPassword}")
-@Access(AccessType.PROPERTY)
-public class User extends Audit implements Serializable {
 
+public class User extends Audit implements Serializable {
 
     public User() {
         this.expired = true;
@@ -41,55 +41,6 @@ public class User extends Audit implements Serializable {
     private String matchingPassword;
     private boolean locked;
     private boolean expired;
-
-
-//    private DateTime createdDate;
-//    private DateTime modifiedDate;
-//    private String createdBy;
-//    private String modifiedBy;
-
-//    @Column(name = "created_date", updatable = false)
-//    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-//    @CreatedDate
-//    public DateTime getCreatedDate() {
-//        return createdDate;
-//    }
-//
-//    public void setCreatedDate(DateTime createdDate) {
-//        this.createdDate = createdDate;
-//    }
-//
-//    @Column(name = "modified_date")
-//    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-//    @LastModifiedDate
-//    public DateTime getModifiedDate() {
-//        return modifiedDate;
-//    }
-//
-//    public void setModifiedDate(DateTime modifiedDate) {
-//        this.modifiedDate = modifiedDate;
-//    }
-//
-//    @Column(name = "created_by")
-//    @CreatedBy
-//    public String getCreatedBy() {
-//        return createdBy;
-//    }
-//
-//    public void setCreatedBy(String createdBy) {
-//        this.createdBy = createdBy;
-//    }
-//
-//    @Column(name = "modified_by")
-//    @LastModifiedBy
-//    public String getModifiedBy() {
-//        return modifiedBy;
-//    }
-//
-//    public void setModifiedBy(String modifiedBy) {
-//        this.modifiedBy = modifiedBy;
-//    }
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -130,6 +81,13 @@ public class User extends Audit implements Serializable {
         this.password = password;
     }
 
+
+    /**
+     * Use NotAudited on fields when you don't want the value / relationship to be audited at all.
+     * I believe you can use this on a field with or without a relationship such as OneToMany, ManyToMany, or just Column.
+     * Use RelationTargetAuditMode.NOT_AUDITED on a relationship field if you want the value to be audited, but not the entity on the other side of the relationship.
+     * For example you want the ID / key value audited, but not the related table.
+     */
 
     @ManyToMany(fetch = FetchType.LAZY)
 //    @Audited(targetAuditMode = NOT_AUDITED)

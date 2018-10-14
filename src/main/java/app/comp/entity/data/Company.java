@@ -2,6 +2,8 @@ package app.comp.entity.data;
 
 
 import app.comp.entity.system.Audit;
+import app.comp.util.ViewMessage.View;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -15,21 +17,53 @@ import java.util.Date;
 public class Company extends Audit implements Serializable {
 
     private long id;
+
+    @JsonView(value = View.AJAXCompany.class)
     private String bin;
+
+    @JsonView(value = {View.AJAXCompanyRu.class, View.AJAXCompanyEu.class})
     private String nameRu;
+
+    @JsonView(value = View.AJAXCompanyKz.class)
     private String nameKz;
+
+    @JsonView(value = View.AJAXCompanyAudit.class)
     private Date registrationDate;
+
+    @JsonView(value = View.AJAXCompany.class)
     private String oked;
+
+    @JsonView(value = {View.AJAXCompanyRu.class, View.AJAXCompanyEu.class})
     private String branchRu;
+
+    @JsonView(value = View.AJAXCompanyKz.class)
     private String branchKz;
+
+    @JsonView(value = View.AJAXCompany.class)
     private String krpName;
+
+    @JsonView(value = {View.AJAXCompanyRu.class, View.AJAXCompanyEu.class})
     private String areaRu;
+
+    @JsonView(value = View.AJAXCompanyKz.class)
     private String areaKz;
+
+    @JsonView(value = View.AJAXCompany.class)
     private String address;
+
+    @JsonView(value = View.AJAXCompany.class)
     private String kato;
+
+    @JsonView(value = View.AJAXCompany.class)
     private String headFio;
+
+    @JsonView(value = View.AJAXCompany.class)
     private String secondOked;
+
+    @JsonView(value = View.AJAXCompany.class)
     private Region region;
+
+    @JsonView(value = View.AJAXCompany.class)
     private Krp krp;
 
 

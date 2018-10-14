@@ -4,6 +4,7 @@ package app.comp.service.implementations;
 import app.comp.entity.data.Company;
 import app.comp.repository.dataRepository.CompanyRepository;
 import app.comp.service.interfaces.CompanyService;
+import app.comp.util.ViewMessage.View;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
@@ -52,7 +53,8 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     @Transactional(readOnly = true)
     public Company findById(long id) {
-        return companyRepository.findById(id).orElseThrow(NullPointerException::new);
+//        .orElseThrow(NullPointerException::new);
+        return  companyRepository.findById(id).get();
     }
 
     @Override
@@ -72,7 +74,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public Company saveCompany(Company company) {
-        return companyRepository.save(company);
+        return  companyRepository.save(company);
     }
 
     @Override
@@ -81,10 +83,21 @@ public class CompanyServiceImpl implements CompanyService {
         return companyRepository.findAll(pageable);
     }
 
+
+    @Override
+    public Page<View.AJAXCompanyRu> findAllRuEnByPage(long regionId, Pageable pageable) {
+        return companyRepository.findByRegionId(regionId, pageable);
+    }
+
+//    @Override
+//    public Page<View.AJAXCompanyKz> findAllKzByPage(Pageable pageable) {
+//        return companyRepository.findTopBy(pageable);
+//    }
+
     @Override
     @Transactional(readOnly = true)
     public Page<Company> findCompaniesByNameRuIsLikeAndBinLike(String nameRu, String bin, Pageable pageable) {
-       return companyRepository.findByNameRuContainingAndBinContaining(nameRu, bin, pageable);
+        return companyRepository.findByNameRuContainingAndBinContaining(nameRu, bin, pageable);
 
     }
 }
