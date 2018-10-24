@@ -54,7 +54,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Transactional(readOnly = true)
     public Company findById(long id) {
 //        .orElseThrow(NullPointerException::new);
-        return  companyRepository.findById(id).get();
+        return companyRepository.findById(id).get();
     }
 
     @Override
@@ -74,7 +74,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public Company saveCompany(Company company) {
-        return  companyRepository.save(company);
+        return companyRepository.save(company);
     }
 
     @Override
@@ -85,14 +85,15 @@ public class CompanyServiceImpl implements CompanyService {
 
 
     @Override
-    public Page<View.AJAXCompanyRu> findAllRuEnByPage(long regionId, Pageable pageable) {
-        return companyRepository.findByRegionId(regionId, pageable);
+    public Page<View.AJAXCompanyRu> findAllRuCompany(Pageable pageable) {
+        return companyRepository.getAllBy(pageable);
     }
 
-//    @Override
-//    public Page<View.AJAXCompanyKz> findAllKzByPage(Pageable pageable) {
-//        return companyRepository.findTopBy(pageable);
-//    }
+    @Override
+    public Page<View.AJAXCompanyKz> findAllKzCompany(Pageable pageable) {
+        return companyRepository.findAllBy(pageable);
+    }
+
 
     @Override
     @Transactional(readOnly = true)

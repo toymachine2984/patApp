@@ -73,8 +73,8 @@ public class WebConfig implements WebMvcConfigurer {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
-        mailSender.setUsername("logging1system@gmail.com");
-        mailSender.setPassword("dbqqqlqddxrbfzpt");
+        mailSender.setUsername("*****");
+        mailSender.setPassword("*****");
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
@@ -157,6 +157,4 @@ public class WebConfig implements WebMvcConfigurer {
         localValidatorFactoryBean.setValidationMessageSource(messageSource());
         return localValidatorFactoryBean;
     }
-
-
 }

@@ -3,39 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Pagination Item</title>
+    <link rel="stylesheet"
+          href="/resources/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.css">
+
 </head>
 <body>
-<nav aria-label="..." th:fragment="pagination">
-    <ul class="pagination pagination-lg">
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">1</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-    </ul>
-</nav>
+<div th:fragment="pagination">
+    <div aria-label="navigation">
+        <div class="btn-toolbar" role="toolbar" aria-label="button groups">
+            <div class="btn-group" id="nav-group" role="group">
+                <button type="button" class="btn btn-secondary" onclick="getNextPage(this)">Previous</button>
+                <button type="button" class="btn btn-secondary active" data-page="0" onclick="getNextPage(this)">1
+                </button>
+                <button type="button" class="btn btn-secondary" data-page="1" onclick="getNextPage(this)">2</button>
+                <button type="button" class="btn btn-secondary" data-page="2" onclick="getNextPage(this)">3</button>
+                <button type="button" class="btn btn-secondary" onclick="getNextPage(this)">Next</button>
+            </div>
+        </div>
 
-<!--<nav aria-label="aaaaa" th:fragment="pagination(data)">-->
-<!--<nav aria-label="aaaaa" >-->
-
-    <!--<ul class="pagination">-->
-        <!--<li class="page-item" th:class="${companies.first} ? 'disabled' : '' ">-->
-            <!--<a class="page-link" href="#" tabyaindex="-1">Previous</a>-->
-        <!--</li>-->
-
-        <!--<li class="page-item"><a class="page-link" th:text="${companies.number-2}"  th:onclick="'getData('+${companies.number-2} +')'"></a></li>-->
-        <!--<li class="page-item"><a class="page-link" th:text="${companies.number-1}" th:onclick="'getData('+${companies.number-1} +')'"></a></li>-->
-        <!--<li class="page-item active">-->
-            <!--<a class="page-link"  th:text="${companies.number}"> <span class="sr-only">(current)</span></a>-->
-        <!--</li>-->
-        <!--<li class="page-item"><a class="page-link" th:text="${companies.number+1}" th:onclick="'getData('+${companies.number+1} +')'"></a></li>-->
-        <!--<li class="page-item"><a class="page-link" th:text="${companies.number+2}" th:onclick="'getData('+${companies.number+2} +')'"></a></li>-->
-
-
-        <!--<li class="page-item" th:class="${companies.last} ? 'disabled' : '' ">-->
-            <!--<a class="page-link" href="#">Next</a>-->
-        <!--</li>-->
-    <!--</ul>-->
-<!--</nav>-->
+    </div>
+</div>
 </body>
 </html>

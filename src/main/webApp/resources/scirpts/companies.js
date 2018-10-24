@@ -10,20 +10,22 @@ function getCompanies() {
         type: "GET",
         url: "/companies",
         contentType: "application/json",
+        data: ajaxOptions,
         success: function (data) {
             $.each(data.content, function (i, item) {
-                $("#body").append("<tr><td>" + item.id + "</td><td>" + ellipsis(item.nameRu) + "</td><td>" + item.region.name + "</td><td>" + item.branch_ru + "</td></tr>")
+                $("#tbody").append("<tr><td>" + (i + 1) + "</td><td>" + ellipsis(item.nameRu || item.nameKz) + "</td><td>" + item.region.name + "</td><td>" + (item.branchRu || item.branchKz) + "</td></tr>")
             });
         },
         beforeSend: function () {
             isResponded = false;
+            $("#tbody tr").empty();
             $("#progressRow").show();
             var $progressElement = $("#progressElement");
             ajaxTimer = setInterval(progress, 1000, $progressElement);
         },
-
-        complete : function () {
+        complete: function (data) {
             isResponded = true;
+            init(data.responseJSON);
             $("#progressRow").hide();
             clearInterval(ajaxTimer);
         }
@@ -39,31 +41,17 @@ function progress(el) {
     }
 }
 
-function f() {
-    
-}
-
 
 function ellipsis(name) {
-    return name.replace(/ТОВАРИЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ/ig, 'ТОО')
-        .replace(/ПРОИЗВОДСТВЕННЫЙ КООПЕРАТИВ/ig, 'ПК')
-        .replace(/АКЦИОНЕРНОЕ ОБЩЕСТВО/ig, 'АО')
-        .replace(/ГОСУДАРСТВЕННОЕ УЧРЕЖДЕНИЕ/ig, 'ГУ')
-        .replace(/ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО/ig, 'ОАО')
-        .replace(/ГОСУДАРСТВЕННОЕ КОММУНАЛЬНОЕ КАЗЕННОЕ ПРЕДПРИЯТИЕ/ig, 'ГККП')
-        .replace(/ГОСУДАРСТВЕННОЕ КОММУНАЛЬНОЕ УЧРЕЖДЕНИЕ /ig, 'ГКУ')
-        .replace(/ОБЩЕСТВЕННОЕ ОБЪЕДИНЕНИЕ/ig, 'ОО');
+    if (name !== undefined) {
+        return name.replace(/ТОВАРИЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ/ig, 'ТОО')
+            .replace(/ПРОИЗВОДСТВЕННЫЙ КООПЕРАТИВ/ig, 'ПК')
+            .replace(/АКЦИОНЕРНОЕ ОБЩЕСТВО/ig, 'АО')
+            .replace(/ГОСУДАРСТВЕННОЕ УЧРЕЖДЕНИЕ/ig, 'ГУ')
+            .replace(/ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО/ig, 'ОАО')
+            .replace(/ГОСУДАРСТВЕННОЕ КОММУНАЛЬНОЕ КАЗЕННОЕ ПРЕДПРИЯТИЕ/ig, 'ГККП')
+            .replace(/ГОСУДАРСТВЕННОЕ КОММУНАЛЬНОЕ УЧРЕЖДЕНИЕ /ig, 'ГКУ')
+            .replace(/ОБЩЕСТВЕННОЕ ОБЪЕДИНЕНИЕ/ig, 'ОО');
+    }
+    return name;
 }
-
-// dataSrc: "content",
-// data: function (d) {
-//     return JSON.stringify(d);
-// },
-// dataFilter: function (data) {
-//     var j = jQuery.parseJSON(data);
-//     j["recordsTotal"] = j["totalElements"];
-//     j['recordsFiltered'] = j['totalElements'];
-//     return JSON.stringify(j);
-// }
-
-// }

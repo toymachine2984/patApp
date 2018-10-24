@@ -27,8 +27,9 @@ public interface CompanyRepository extends PagingAndSortingRepository<Company, L
     @Override
     Page<Company> findAll(Pageable pageable);
 
+    Page<View.AJAXCompanyKz> findAllBy(Pageable pageable);
 
-    Page<View.AJAXCompanyRu> findByRegionId(long regionId,Pageable pageable);
+    Page<View.AJAXCompanyRu> getAllBy(Pageable pageable);
 
     Page<Company> findByNameRuContainingAndBinContaining(String nameRu, String bin, Pageable pageable);
 }

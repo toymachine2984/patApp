@@ -120,11 +120,11 @@ public class Company extends Audit implements Serializable {
     }
 
     @Column(name = "branch_ru")
-    public String getBranch_ru() {
+    public String getBranchRu() {
         return branchRu;
     }
 
-    public void setBranch_ru(String branch_ru) {
+    public void setBranchRu(String branch_ru) {
         this.branchRu = branch_ru;
     }
 
@@ -138,11 +138,11 @@ public class Company extends Audit implements Serializable {
     }
 
     @Column(name = "area_ru")
-    public String getArea_ru() {
+    public String getAreaRu() {
         return areaRu;
     }
 
-    public void setArea_ru(String area_ru) {
+    public void setAreaRu(String area_ru) {
         this.areaRu = area_ru;
     }
 
@@ -212,20 +212,20 @@ public class Company extends Audit implements Serializable {
     }
 
     @Column(name = "branch_kz")
-    public String getBranch_kz() {
+    public String getBranchKz() {
         return branchKz;
     }
 
-    public void setBranch_kz(String branch_kz) {
+    public void setBranchKz(String branch_kz) {
         this.branchKz = branch_kz;
     }
 
     @Column(name = "area_kz")
-    public String getArea_kz() {
+    public String getAreaKz() {
         return areaKz;
     }
 
-    public void setArea_kz(String area_kz) {
+    public void setAreaKz(String area_kz) {
         this.areaKz = area_kz;
     }
 

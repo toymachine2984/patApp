@@ -31,27 +31,27 @@ public class View {
     public interface AJAXCompanyRu extends AJAXCompany {
         String getNameRu();
 
-//        String getBranch_ru();
-//
-//        String getArea_ru();
+        String getBranchRu();
+
+        String getAreaRu();
     }
 
 
     public interface AJAXCompanyKz extends AJAXCompany {
         String getNameKz();
 
-        String getBranch_kz();
+        String getBranchKz();
 
-        String getArea_kz();
+        String getAreaKz();
     }
 
 
     public interface AJAXCompanyEu extends AJAXCompany {
         String getNameRu();
 
-        String getBranch_ru();
+        String getBranchRu();
 
-        String getArea_ru();
+        String getAreaRu();
     }
 
     public interface AJAXCompanyAudit extends AJAXCompany {

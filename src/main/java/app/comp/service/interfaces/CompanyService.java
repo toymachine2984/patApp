@@ -30,7 +30,9 @@ public interface CompanyService {
 
     Page<Company> findAllByPage(Pageable pageable);
 
-    Page<View.AJAXCompanyRu> findAllRuEnByPage(long regionId, Pageable pageable);
+    Page<View.AJAXCompanyRu> findAllRuCompany(Pageable pageable);
+
+    Page<View.AJAXCompanyKz> findAllKzCompany(Pageable pageable);
 
 
     Page<Company> findCompaniesByNameRuIsLikeAndBinLike(String nameRu, String bin, Pageable pageable);

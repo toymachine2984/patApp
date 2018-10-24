@@ -1,6 +1,7 @@
 package app.comp.controller;
 
 
+import app.comp.entity.ICompany;
 import app.comp.entity.data.Company;
 import app.comp.entity.system.DataTable;
 import app.comp.service.interfaces.CompanyService;
@@ -19,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -55,12 +57,12 @@ public class CompanyController {
         return "templates/companies :: companiesFragment";
     }
 
-    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public Page<Company> getCompanies(@RequestParam(value = "start", required = false, defaultValue = "0") int start,
-                                      @RequestParam(value = "length", required = false, defaultValue = "10") int length) {
-        return service.findAllByPage(PageRequest.of(start / length, length));
-    }
+//    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseBody
+//    public Page<Company> getCompanies(@RequestParam(value = "start", required = false, defaultValue = "0") int start,
+//                                      @RequestParam(value = "length", required = false, defaultValue = "10") int length) {
+//        return service.findAllByPage(PageRequest.of(start / length, length));
+//    }
 
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -99,15 +101,15 @@ public class CompanyController {
         return service.findById(id);
     }
 
-//
-//    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseBody
-//    public Page<View.AJAXCompanyRu> getCompanies(@RequestParam(value = "start", required = false, defaultValue = "0") int start,
-//                                                 @RequestParam(value = "length", required = false, defaultValue = "10") int length) {
-//        Page<View.AJAXCompanyRu> allRuEnByPage = service.findAllRuEnByPage(1L, PageRequest.of(start / length, length));
-//
-//        return  allRuEnByPage;
-//    }
 
-
+    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Page<? extends ICompany> getCompanies(@RequestParam(value = "start", required = false, defaultValue = "0") int start,
+                                                 @RequestParam(value = "length", required = false, defaultValue = "10") int length,
+                                                 Locale locale) {
+            if (locale.getLanguage().equals("kk")) {
+            return service.findAllKzCompany(PageRequest.of(start, length));
+        }
+        return service.findAllRuCompany(PageRequest.of(start, length));
+    }
 }
